@@ -50,8 +50,8 @@ class Person {
 
 
     eat(food) {
-        if (this.stomach < 10) {
-            this.stomach.push(food)
+        if (this.stomach.length < 10) {
+            this.stomach.push(food);
         }
     }
     poop() {
@@ -62,7 +62,7 @@ class Person {
     }
 }
 
-const Person1 = new Person("George", 40)
+const Person1 = new Person("George", 40);
 
 
 
@@ -165,14 +165,14 @@ class Instructor extends Lambdasian {
         super(attributes)
         this.specialty = attributes.specialty
         this.favLanguage = attributes.favLanguage
-        this.properties = attributes.properties
+        this.catchPhrase = attributes.catchPhrase
     }
     demo(subject) {
 
         return `Today we are learning about ${subject}.`
     }
 
-    grade(subject, student) {
+    grade(student, subject) {
         return `${student.name} receives a perfect score on ${subject}`
 
 
@@ -185,7 +185,7 @@ const newInstructor = new Instructor({
         location: "Florida",
         specialty: "Culinary Arts",
         favLanguage: "English",
-        properties: "I dont know"
+
 
     })
     // console.log(newInstructor.demo("French Cuisine"))
@@ -212,9 +212,9 @@ class Student extends Lambdasian {
         this.className = attributes.className
     }
 
-    listSUbjects() {
+    listSubjects() {
 
-        return `${this.favoriteSubjects}`
+        return `${this.favSubjects}`
 
     }
     PRAssignment(subject) {
@@ -224,20 +224,20 @@ class Student extends Lambdasian {
     }
 
     sprintChallenge(subject) {
-        return `${student.name}`
-        has begun sprint challenge on $ { subject }
-        ``
+        return `${this.name} has begun sprint challenge on ${subject}`
+
+
     }
 
 }
 
 const newStudent = new Student({
-        name: George,
+        name: "George",
         age: 18,
-        location: Washington,
-        previousBackground: nothing,
-        favSubject: ["French Cuisine", "JavaScriot", "CSS"],
-        className: ls201
+        location: "Washington",
+        previousBackground: "nothing",
+        favSubject: ["French Cuisine", "JavaScript", "CSS"],
+        className: "ls201"
 
 
 
@@ -251,26 +251,56 @@ const newStudent = new Student({
         - Write a ProjectManager class extending Instructor.
         - Its constructor takes a single argument - an object with the following keys:
             + All the keys used to initialize instances of Instructor.
-            + `gradClassName`: i.e. CS1
-            + `favInstructor`: i.e. Sean
+            + `
+            gradClassName `: i.e. CS1
+            + `
+            favInstructor `: i.e. Sean
         - Its constructor calls the parent constructor passing to it what it needs.
-        - The constructor should also initialize `gradClassName` and `favInstructor` properties on the instance.
+        - The constructor should also initialize `
+            gradClassName ` and `
+            favInstructor ` properties on the instance.
         - ProjectManager instances have the following methods:
-            + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
-            + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
-    */
-class ProjectManager {
+            + `
+            standUp ` a method that takes in a slack channel and returns ` { name }
+            announces to { channel }, @channel standy times!`
+            + `
+            debugsCode ` a method that takes in a student object and a subject and returns ` { name }
+            debugs { student.name }
+            's code on {subject}` */
+class ProjectManager extends Instructor {
+    constructor(attributes) {
+        super(attributes)
+        this.gradClassName = attributes.gradClassName
+        this.favInstructor = attributes.favInstructor
+    }
 
+    standUp(channel) {
+
+        return `${this.name} announces to ${channel}, @channel standy times!`
+    }
+
+    debugsCode(student, subject) {
+        return `${this.name} debugs ${student.name}'s code on ${subject}`
+
+    }
 }
+const newProjectManager = new ProjectManager({
+        name: "Jibjab",
+        gradClassName: "web38",
+        favInstructor: "Brit Hemming",
 
-/*
-  STRETCH PROBLEM (no tests!)
-    - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
-    - Now that our students have a grade build out a method on the Instructor (this will be used by _BOTH_ instructors and PM's) that will randomly add or subtract points to a student's grade. _Math.random_ will help.
-    - Add a graduate method to a student.
-      + This method, when called, will check the grade of the student and see if they're ready to graduate from Lambda School
-      + If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
-*/
+
+
+
+    })
+    /*
+      STRETCH PROBLEM (no tests!)
+        - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
+        - Now that our students have a grade build out a method on the Instructor (this will be used by _BOTH_ instructors and PM's) that will randomly add or subtract points to a student's grade. _Math.random_ will help.
+        - Add a graduate method to a student.
+          + This method, when called, will check the grade of the student and see if they're ready to graduate from Lambda School
+          + If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
+    */
 
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
